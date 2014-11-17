@@ -9,9 +9,9 @@ import org.unique.web.render.Render;
 /**
  * jsp渲染器
  * @author biezhi
- * @version 1.0
+ * @since 1.0
  */
-public class JspRender extends Render {
+public class JspRender implements Render {
 
 	private static final String suffix = ".jsp";
 	
@@ -21,6 +21,9 @@ public class JspRender extends Render {
 	public void render(HttpServletRequest request, HttpServletResponse response, String viewPath) {
 		try {
 			String url = prefix + viewPath + suffix;
+			if(viewPath.endsWith(suffix)){
+				url = prefix + viewPath;
+			}
 			url = url.replaceAll("//", "/");
 			response.setCharacterEncoding(Const.ENCODING);
 			request.getRequestDispatcher(url).forward(request, response);

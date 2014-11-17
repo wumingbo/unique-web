@@ -5,7 +5,7 @@ import org.unique.web.core.ActionInvocation;
 /**
  * 抽象全局拦截器
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public abstract class AbstractInterceptor implements Interceptor {
 	

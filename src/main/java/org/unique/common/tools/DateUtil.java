@@ -12,7 +12,7 @@ import java.util.TimeZone;
 /**
  * date util
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class DateUtil {
 

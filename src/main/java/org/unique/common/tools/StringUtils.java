@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * String Util
- * @author:biezhi
- * @version:1.0
+ * @author biezhi
+ * @since 1.0
  */
 public class StringUtils {
 

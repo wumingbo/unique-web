@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 自动注入接口
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

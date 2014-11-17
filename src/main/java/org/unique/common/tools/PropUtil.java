@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 /**
  * properties file util
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class PropUtil {
 

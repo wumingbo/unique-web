@@ -9,7 +9,7 @@ import org.unique.common.tools.CollectionUtil;
 /**
  * 增强管理器
  * @author biezhi
- * @version 1.0
+ * @since 1.0
  */
 public final class SupportManager {
 	

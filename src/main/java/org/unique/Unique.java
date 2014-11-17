@@ -29,7 +29,7 @@ import org.unique.web.listener.WebInitContextListener;
 /**
  * 框架执行流程
  * @author biezhi
- * @version 1.0
+ * @since 1.0
  */
 public class Unique {
 
@@ -61,10 +61,10 @@ public class Unique {
 	 * 初始化方法
 	 * @return true:初始化成功 false:初始化失败
 	 */
-	public boolean init() {
+	public boolean init(final String configPath) {
 
 		// 初始化配置文件
-		initConst();
+		initConst(configPath);
 
 		// 初始化IOC容器
 		initIOC();
@@ -90,10 +90,10 @@ public class Unique {
 	/**
 	 * 初始化常量
 	 */
-	private void initConst(){
+	private void initConst(final String configPath){
 		// 加载默认配置文件
 		Map<String, String> defaultCfg = PropUtil.getPropertyMap(Const.DEFAULT_CONFIG);
-		defaultCfg.putAll(PropUtil.getPropertyMap(Const.CUSTOM_CONFIG));
+		defaultCfg.putAll(PropUtil.getPropertyMap(configPath));
 		Const.putAllConst(defaultCfg);
 		defaultCfg = null;
 		if(Const.getConfig("unique.encoding").trim().length() > 0){

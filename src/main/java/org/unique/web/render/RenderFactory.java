@@ -45,7 +45,7 @@ public class RenderFactory {
     }
 
     public Render getErrorRender(int errorCode) {
-        return new ErrorRender(errorCode, Const.getConfig("errorCode"));
+        return new ErrorRender(errorCode, Const.getConfig("unique.error." + errorCode));
     }
 
     public Render getRedirectRender(String url) {

@@ -6,8 +6,8 @@ import org.unique.web.annotation.Action.HttpMethod;
 
 /**
  * 代表请求的Action类
- * @author:biezhi
- * @version:1.0
+ * @author biezhi
+ * @since 1.0
  */
 public final class Action {
 

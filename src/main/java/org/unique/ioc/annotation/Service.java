@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 要注入的service注解
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

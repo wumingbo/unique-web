@@ -2,13 +2,11 @@ package org.unique;
 
 import java.util.Map;
 
-import org.unique.common.tools.CollectionUtil;
-
 /**
  * 常量类
  * 
  * @author biezhi
- * @version　1.0
+ * @since　1.0
  */
 public final class Const {
 	
@@ -17,7 +15,7 @@ public final class Const {
 	public static final String CUSTOM_CONFIG = "unique-config.properties";
 	public static final String SUPPORT_PACKAGE = "org.unique.support";
 	public static final int DEFAULT_PORT = 8080;
-	private static Map<String, String> CONFIG_MAP = CollectionUtil.newHashMap();
+	private static Map<String, String> CONFIG_MAP;
 
 	public static String RENDER_TYPE = "jsp";
 	public static String ENCODING = "UTF-8";

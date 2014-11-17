@@ -20,7 +20,7 @@ import org.unique.web.annotation.Controller;
 /**
  * 默认的IOC容器实现
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class DefaultContainerImpl implements Container {
 

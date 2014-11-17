@@ -14,7 +14,7 @@ import org.unique.web.render.RenderFactory;
 /**
  * ErrorRender.
  */
-public class ErrorRender extends Render {
+public class ErrorRender implements Render {
 	
 	protected static final String contentType = "text/html;charset=" + Const.ENCODING;
 	
@@ -40,7 +40,6 @@ public class ErrorRender extends Render {
 			RenderFactory.single().getDefaultRender().render(request, response, view);
 			return;
 		}
-		
 		// render with html content
 		PrintWriter writer = null;
 		try {

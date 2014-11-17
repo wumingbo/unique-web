@@ -15,7 +15,7 @@ import org.unique.web.render.RenderFactory;
 /**
  * 默认的Handler实现
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class DefalutHandlerImpl implements Handler {
 

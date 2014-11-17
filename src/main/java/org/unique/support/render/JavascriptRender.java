@@ -13,7 +13,7 @@ import org.unique.web.render.Render;
 /**
  * JavascriptRender.
  */
-public class JavascriptRender extends Render {
+public class JavascriptRender implements Render {
 	
 	private static final String contentType = "text/javascript;charset=" + Const.ENCODING;
 	private String jsText;

@@ -8,9 +8,9 @@ import org.unique.web.render.Render;
 /**
  * 请求渲染器
  * @author　biezhi
- * @version　1.0
+ * @since　1.0
  */
-public final class ActionRender extends Render {
+public final class ActionRender implements Render {
 	
 	private String actionUrl;
 	

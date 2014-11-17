@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * 控制器注解
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

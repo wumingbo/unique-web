@@ -3,7 +3,7 @@ package org.unique.web.exception;
 /**
  * ActionInvoke异常类
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class ActionInvokeException extends RuntimeException {
 

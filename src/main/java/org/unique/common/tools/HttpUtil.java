@@ -28,7 +28,7 @@ import javax.net.ssl.X509TrustManager;
 /**
  * http util
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class HttpUtil {
 
@@ -243,7 +243,7 @@ public class HttpUtil {
 	/**
 	 * https 域名校验
 	 * @author biezhi
-	 * @version 0.1.0
+	 * @since 1.0
 	 */
 	public class TrustAnyHostnameVerifier implements HostnameVerifier {
 		public boolean verify(String hostname, SSLSession session) {

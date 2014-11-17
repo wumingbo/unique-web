@@ -7,7 +7,7 @@ import org.unique.web.render.RenderFactory;
 /**
  * Action异常类
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class ActionException extends RuntimeException{
 

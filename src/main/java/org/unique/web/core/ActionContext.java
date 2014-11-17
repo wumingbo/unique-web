@@ -10,7 +10,7 @@ import org.unique.common.tools.WebUtil;
 /**
  * 全局的ActionContext
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public final class ActionContext {
 

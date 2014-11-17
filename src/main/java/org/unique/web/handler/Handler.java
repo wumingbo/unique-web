@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Handler
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public interface Handler {
 

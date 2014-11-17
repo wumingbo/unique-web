@@ -13,7 +13,7 @@ import org.unique.web.render.Render;
 /**
  * TextRender.
  */
-public class TextRender extends Render {
+public class TextRender implements Render {
 	
 	private static final String defaultContentType = "text/plain;charset=" + Const.ENCODING;
 	private String text;

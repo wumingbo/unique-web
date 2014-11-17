@@ -15,7 +15,7 @@ import org.unique.web.interceptor.InterceptorFactory;
 /**
  * ActionInvocation
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class ActionInvocation {
 

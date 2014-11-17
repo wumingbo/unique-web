@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * 方法上定义的Action注解
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)

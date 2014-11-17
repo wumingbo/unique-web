@@ -3,7 +3,7 @@ package org.unique.support;
 /**
  * 增强顶层接口
  * @author biezhi
- * @version 1.0
+ * @since 1.0
  */
 public abstract class Support {
 	

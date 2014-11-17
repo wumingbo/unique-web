@@ -8,9 +8,9 @@ import org.unique.Const;
 /**
  * 顶层渲染器接口
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
-public abstract class Render {
+public interface Render {
 
 	/**
 	 * 视图文件位置
@@ -23,6 +23,6 @@ public abstract class Render {
      * @param response 响应对象
      * @param viewPath 视图位置
      */
-	public abstract void render(HttpServletRequest request, HttpServletResponse response, String viewPath);
+	public void render(HttpServletRequest request, HttpServletResponse response, String viewPath);
 	
 }

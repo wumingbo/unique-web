@@ -6,7 +6,7 @@ import javax.servlet.ServletContext;
 /**
  * webContext初始化监听器
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public interface WebInitContextListener extends UniqueListener{
 	

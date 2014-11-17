@@ -9,9 +9,9 @@ package org.unique.web.server;
 //import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
- * unique jetty server
- * @author:biezhi
- * @version:1.0
+ * unique自带的web服务
+ * @author biezhi
+ * @since 1.0
  */
 public class UniqueServer {
 

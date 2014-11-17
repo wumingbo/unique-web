@@ -8,10 +8,13 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.unique.Const;
 import org.unique.Unique;
 import org.unique.common.tools.WebUtil;
 import org.unique.web.handler.Handler;
@@ -19,8 +22,11 @@ import org.unique.web.handler.Handler;
 /**
  * mvc核心过滤器
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
+@WebFilter(urlPatterns = {"/*"}, 
+asyncSupported = true,
+initParams = {@WebInitParam(name="configPath",value=Const.CUSTOM_CONFIG)})
 public class Dispatcher implements Filter {
 
 	private Logger logger = Logger.getLogger(Dispatcher.class);
@@ -37,17 +43,20 @@ public class Dispatcher implements Filter {
 	 */
 	public void init(FilterConfig config) {
 		long start = System.currentTimeMillis();
+		final String configPath = config.getInitParameter("configPath");
 		if (!isInit) {
-			logger.info("Root WebApplicationContext: initialization started");
+			logger.info("Root WebApplicationContext: 初始化开始...");
+			
 			// config path
 			ActionContext.setActionContext(config.getServletContext());
+			
 			// init web
-			isInit = unique.init();
+			isInit = unique.init(configPath);
 			
 			handler = unique.getHandler();
 			long time = (System.currentTimeMillis() - start);
-			logger.info("Root WebApplicationContext: initialization completed in " + time + " ms");
-			logger.info("initialized unique-web successfully!");
+			logger.info("Root WebApplicationContext: 初始化耗费时长：" + time + " ms");
+			logger.info("unique-web初始化完成!");
 		}
 	}
 

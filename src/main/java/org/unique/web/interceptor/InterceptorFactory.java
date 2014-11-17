@@ -8,7 +8,7 @@ import org.unique.web.annotation.Intercept;
 /**
  * 拦截器工厂接口
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class InterceptorFactory {
 

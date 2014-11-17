@@ -8,7 +8,7 @@ import org.unique.ioc.Container;
 /**
  * Bean工厂
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 @SuppressWarnings("unchecked")
 public class BeanFactory {

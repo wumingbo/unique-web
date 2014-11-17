@@ -5,7 +5,7 @@ import org.unique.web.core.ActionInvocation;
 /**
  * 拦截器接口
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public interface Interceptor {
 

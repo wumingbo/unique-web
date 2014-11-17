@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * io util
  * @author biezhi
- * @version 0.1.0
+ * @since 1.0
  */
 public class IOUtil {
 
