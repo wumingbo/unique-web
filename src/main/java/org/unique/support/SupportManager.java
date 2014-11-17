@@ -3,7 +3,7 @@ package org.unique.support;
 import java.util.List;
 import java.util.Map;
 
-import org.unique.common.tools.CollectionUtil;
+import org.unique.tools.CollectionUtil;
 
 
 /**

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.unique.common.tools.WebUtil;
+import org.unique.tools.WebUtil;
 
 /**
  * 全局的ActionContext

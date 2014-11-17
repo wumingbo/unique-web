@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.unique.Const;
 import org.unique.Unique;
-import org.unique.common.tools.WebUtil;
+import org.unique.tools.WebUtil;
 import org.unique.web.handler.Handler;
 
 /**

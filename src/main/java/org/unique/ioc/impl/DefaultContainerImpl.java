@@ -10,11 +10,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.unique.common.tools.CollectionUtil;
 import org.unique.ioc.Container;
 import org.unique.ioc.annotation.Autowired;
 import org.unique.ioc.annotation.Component;
 import org.unique.ioc.annotation.Service;
+import org.unique.tools.CollectionUtil;
 import org.unique.web.annotation.Controller;
 
 /**

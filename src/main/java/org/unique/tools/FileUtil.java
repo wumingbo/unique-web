@@ -1,4 +1,4 @@
-package org.unique.common.tools;
+package org.unique.tools;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

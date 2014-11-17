@@ -1,4 +1,4 @@
-package org.unique.common.tools;
+package org.unique.tools;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,7 +47,7 @@ public class PropUtil {
 		try {
 			in = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);
 			if (null == in) {
-				throw new RuntimeException("the properties file [" + resourceName + "] not found!");
+				throw new RuntimeException("没有找到资源文件 [" + resourceName + "]");
 			}
 			Properties prop = new Properties();
 			prop.load(in);
@@ -57,7 +57,7 @@ public class PropUtil {
 				Entry<Object, Object> entry = it.next();
 				map.put(entry.getKey().toString(), entry.getValue().toString());
 			}
-			logger.info("Loading properties file from class path resource [" + resourceName + "]");
+			logger.info("加载properties文件[" + resourceName + "]");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

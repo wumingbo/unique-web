@@ -10,12 +10,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
-import org.unique.common.tools.CollectionUtil;
-import org.unique.common.tools.StringUtils;
 import org.unique.ioc.Container;
 import org.unique.ioc.impl.DefaultContainerImpl;
+import org.unique.tools.CollectionUtil;
+import org.unique.tools.StringUtils;
 import org.unique.web.annotation.Action.HttpMethod;
 import org.unique.web.annotation.Controller;
+import org.unique.web.annotation.PathVariable;
 import org.unique.web.render.Render;
 
 /**
@@ -50,22 +51,21 @@ public class ActionMapping {
 	 */
 	public Map<String, Action> buildActionMapping() {
 		urlMapping.clear();
-		// all controller
+		//所有控制器
 		List<Class<?>> controllerList = beanContainer.getControllers();
-		// for controller
+		//遍历控制器
 		for (Class<?> controller : controllerList) {
 			Method[] methods = controller.getMethods();
 			String nameSpace = controller.getAnnotation(Controller.class).value();
 			nameSpace = (nameSpace.equals("/")) ? "/" : nameSpace + "/";
 			for (Method method : methods) {
 				
-				org.unique.web.annotation.Action mapping = method
-						.getAnnotation(org.unique.web.annotation.Action.class);
+				org.unique.web.annotation.Action mapping = method.getAnnotation(org.unique.web.annotation.Action.class);
 				
-				// action mapping method
+				//action方法
 				if (isLegalMethod(method) && null != mapping) {
 					
-					// action path
+					// action路径
 					String path = mapping.value().equals("default") ? method.getName() : mapping.value();
 					
 					HttpMethod methodType = mapping.method();
@@ -81,7 +81,7 @@ public class ActionMapping {
 						for (int i = 0; i < parameters.length; i++) {
 							arguments[i] = parameters[i];
 							if (!parameters[i].getType().equals(R.class)) {
-								if (viewReg.indexOf("@") != -1) {
+								if (viewReg.indexOf("@") != -1 && null != parameters[i].getDeclaredAnnotation(PathVariable.class)) {
 									if (parameters[i].getType().equals(Integer.class)) {
 										viewReg = viewReg.replaceFirst("@\\w+", "(\\\\d+)");
 									} else {
@@ -93,13 +93,13 @@ public class ActionMapping {
 						}
 					}
 					if ((viewPath.split("/@").length - 1) != count) {
-						warnning(controller, method, "the number of parameters does not match！");
+						warnning(controller, method, " 方法参数列表和访问路径的参数个数不匹配！");
 						continue;
 					}
 					//viewPath = "^" + viewPath + "$";
 					Action action = new Action(controller, method, arguments, methodType, viewPath);
 					if (null != urlMapping.get(viewReg)) {
-						throw new RuntimeException(controller.getName() + ", the action " + viewPath + " is repeat");
+						throw new RuntimeException(controller.getName() + ", action \"" + viewPath + "\"重复");
 					}
 					urlMapping.put(viewReg, action);
 				}

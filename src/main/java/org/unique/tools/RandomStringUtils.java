@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.unique.common.tools;
+package org.unique.tools;
 
 import java.util.Random;
 

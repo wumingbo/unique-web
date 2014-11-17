@@ -7,14 +7,14 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.unique.common.tools.ClassHelper;
-import org.unique.common.tools.CollectionUtil;
-import org.unique.common.tools.PropUtil;
 import org.unique.ioc.Container;
 import org.unique.ioc.impl.BeanFactory;
 import org.unique.ioc.impl.DefaultContainerImpl;
 import org.unique.support.Support;
 import org.unique.support.SupportManager;
+import org.unique.tools.ClassHelper;
+import org.unique.tools.CollectionUtil;
+import org.unique.tools.PropUtil;
 import org.unique.web.annotation.Controller;
 import org.unique.web.annotation.Intercept;
 import org.unique.web.core.Action;
@@ -173,6 +173,7 @@ public class Unique {
 		List<String> matcherList = new ArrayList<String>(matcherSet);
 		Collections.sort(matcherList);
 		for (String r : matcherList) {
+			//logger.info("action ：" + r.replace("/(\\d+)", "/@parma"));
 			logger.info("action ：" + r);
 		}
 		logger.info("action size ：" + matcherList.size());

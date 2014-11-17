@@ -1,4 +1,4 @@
-package org.unique.common.tools;
+package org.unique.tools;
 
 import java.text.DateFormat;
 import java.text.ParseException;

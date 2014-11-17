@@ -1,4 +1,4 @@
-package org.unique.common.tools;
+package org.unique.tools;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -164,7 +164,7 @@ public class ClassHelper {
     	Set<Class<?>> classSet = scanPackage(packageName, true);
     	List<Class<?>> classList = CollectionUtil.newArrayList(classSet.size());
     	for(Class<?> clazz : classSet){
-    		if(clazz.getSuperclass().equals(parent)){
+    		if(null != clazz.getSuperclass() && clazz.getSuperclass().equals(parent)){
     			classList.add(clazz);
     		}
     	}

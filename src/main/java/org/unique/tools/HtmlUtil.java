@@ -1,4 +1,4 @@
-package org.unique.common.tools;
+package org.unique.tools;
 
 /**
  * html tool

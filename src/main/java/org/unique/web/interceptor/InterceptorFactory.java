@@ -2,7 +2,7 @@ package org.unique.web.interceptor;
 
 import java.util.List;
 
-import org.unique.common.tools.CollectionUtil;
+import org.unique.tools.CollectionUtil;
 import org.unique.web.annotation.Intercept;
 
 /**
