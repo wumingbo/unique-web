@@ -1,4 +1,4 @@
-package org.unique.web.render.impl;
+package org.unique.support.render;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,27 +11,23 @@ import org.unique.common.tools.IOUtil;
 import org.unique.web.render.Render;
 
 /**
- * HtmlRender.
+ * JavascriptRender.
  */
-public class HtmlRender extends Render {
+public class JavascriptRender extends Render {
 	
-	private static final String contentType = "text/html;charset=" + Const.ENCODING;
-	private String text;
+	private static final String contentType = "text/javascript;charset=" + Const.ENCODING;
+	private String jsText;
 	
-	public HtmlRender(String text) {
-		this.text = text;
+	public JavascriptRender(String jsText) {
+		this.jsText = jsText;
 	}
 	
 	public void render(HttpServletRequest request, HttpServletResponse response, String viewPath) {
 		PrintWriter writer = null;
 		try {
-			response.setHeader("Pragma", "no-cache");	// HTTP/1.0 caches might not implement Cache-Control and might only implement Pragma: no-cache
-	        response.setHeader("Cache-Control", "no-cache");
-	        response.setDateHeader("Expires", 0);
-	        
 			response.setContentType(contentType);
 	        writer = response.getWriter();
-	        writer.write(text);
+	        writer.write(jsText);
 	        writer.flush();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -41,6 +37,7 @@ public class HtmlRender extends Render {
 		}
 	}
 }
+
 
 
 

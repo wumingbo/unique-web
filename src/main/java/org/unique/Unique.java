@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.unique.common.tools.ClassHelper;
 import org.unique.common.tools.CollectionUtil;
+import org.unique.common.tools.PropUtil;
 import org.unique.ioc.Container;
 import org.unique.ioc.impl.BeanFactory;
 import org.unique.ioc.impl.DefaultContainerImpl;
@@ -58,13 +59,12 @@ public class Unique {
 
 	/**
 	 * 初始化方法
-	 * @param configPath 配置文件路径
 	 * @return true:初始化成功 false:初始化失败
 	 */
-	public boolean init(String configPath) {
+	public boolean init() {
 
 		// 初始化配置文件
-		Const.init(configPath);
+		initConst();
 
 		// 初始化IOC容器
 		initIOC();
@@ -88,21 +88,47 @@ public class Unique {
 	}
 
 	/**
+	 * 初始化常量
+	 */
+	private void initConst(){
+		// 加载默认配置文件
+		Map<String, String> defaultCfg = PropUtil.getPropertyMap(Const.DEFAULT_CONFIG);
+		defaultCfg.putAll(PropUtil.getPropertyMap(Const.CUSTOM_CONFIG));
+		Const.putAllConst(defaultCfg);
+		defaultCfg = null;
+		if(Const.getConfig("unique.encoding").trim().length() > 0){
+			Const.ENCODING = Const.getConfig("unique.encoding").trim();
+		}
+		if(Const.getConfig("unique.view.type").trim().length() > 0){
+			Const.RENDER_TYPE = Const.getConfig("unique.view.type").trim();
+		}
+	}
+	/**
 	 * 初始化第三方增强
 	 */
 	private void initSupport() {
 		List<Class<?>> supportList = ClassHelper.scanClasses("org.unique.support", Support.class);
 		if(supportList.size() > 0){
-			for(Class<?> clazz : supportList){
-				try {
-					Support support = (Support)clazz.newInstance();
+			try {
+				// 第一个启动orm增强
+				Class<?> ormClass = Class.forName("org.unique.support.orm.OrmSupport");
+				if (supportList.contains(ormClass)) {
+					Support support = (Support) ormClass.newInstance();
+					support.startup();
+					SupportManager.put(ormClass.getName(), support);
+					supportList.remove(ormClass);
+				}
+				for (Class<?> clazz : supportList) {
+					Support support = (Support) clazz.newInstance();
 					support.startup();
 					SupportManager.put(clazz.getName(), support);
-				} catch (InstantiationException e) {
-					logger.error("初始化增强失败: " + e.getMessage());
-				} catch (IllegalAccessException e) {
-					logger.error("初始化增强失败: " + e.getMessage());
 				}
+			} catch (InstantiationException e) {
+				logger.error("初始化增强失败: " + e.getMessage());
+			} catch (IllegalAccessException e) {
+				logger.error("初始化增强失败: " + e.getMessage());
+			} catch (ClassNotFoundException e) {
+				logger.error("类没有被找到: " + e.getMessage());
 			}
 		}
 	}

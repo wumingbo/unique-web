@@ -36,14 +36,13 @@ public class Dispatcher implements Filter {
 	 * @param config 初始化参数对象
 	 */
 	public void init(FilterConfig config) {
-		String configPath = config.getInitParameter("configPath");
 		long start = System.currentTimeMillis();
 		if (!isInit) {
 			logger.info("Root WebApplicationContext: initialization started");
 			// config path
 			ActionContext.setActionContext(config.getServletContext());
 			// init web
-			isInit = unique.init(configPath);
+			isInit = unique.init();
 			
 			handler = unique.getHandler();
 			long time = (System.currentTimeMillis() - start);

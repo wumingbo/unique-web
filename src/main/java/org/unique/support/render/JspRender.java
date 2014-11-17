@@ -1,4 +1,4 @@
-package org.unique.web.render.impl;
+package org.unique.support.render;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,24 +7,23 @@ import org.unique.Const;
 import org.unique.web.render.Render;
 
 /**
- * JspRender.
+ * jsp渲染器
+ * @author biezhi
+ * @version 1.0
  */
 public class JspRender extends Render {
 
-	public JspRender() {
-		// TODO Auto-generated constructor stub
-	}
+	private static final String suffix = ".jsp";
 	
-	public JspRender(String view) {
+	public JspRender() {
 	}
 	
 	public void render(HttpServletRequest request, HttpServletResponse response, String viewPath) {
 		try {
-			if(!viewPath.endsWith(".jsp")){
-				viewPath += ".jsp";
-			}
+			String url = prefix + viewPath + suffix;
+			url = url.replaceAll("//", "/");
 			response.setCharacterEncoding(Const.ENCODING);
-			request.getRequestDispatcher(viewPath).forward(request, response);
+			request.getRequestDispatcher(url).forward(request, response);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

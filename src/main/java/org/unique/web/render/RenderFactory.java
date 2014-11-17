@@ -1,11 +1,12 @@
 package org.unique.web.render;
 
 import org.unique.Const;
-import org.unique.web.render.impl.ErrorRender;
-import org.unique.web.render.impl.HtmlRender;
-import org.unique.web.render.impl.JavascriptRender;
-import org.unique.web.render.impl.JspRender;
-import org.unique.web.render.impl.TextRender;
+import org.unique.support.render.ErrorRender;
+import org.unique.support.render.HtmlRender;
+import org.unique.support.render.JavascriptRender;
+import org.unique.support.render.JspRender;
+import org.unique.support.render.RedirectRender;
+import org.unique.support.render.TextRender;
 
 /**
  * RenderFactory.
@@ -14,7 +15,7 @@ public class RenderFactory {
 
     private RenderFactory() {
     }
-
+    
     public static RenderFactory single() {
         return RenderFactoryHoder.instance;
     }
@@ -23,20 +24,7 @@ public class RenderFactory {
 
         private static final RenderFactory instance = new RenderFactory();
     }
-
-    /**
-     * 获取默认渲染器
-     * @param view 视图
-     * @return Render
-     */
-    public Render getRender(String view) {
-        return getDefaultRender(view);
-    }
-
-    public Render getJspRender(String view) {
-        return new JspRender(view);
-    }
-
+    
     public Render getTextRender(String text) {
         return new TextRender(text);
     }
@@ -46,16 +34,12 @@ public class RenderFactory {
     }
 
     public Render getDefaultRender() {
-        if (Const.RENDER_TYPE == RenderType.JSP) {
+        if (Const.RENDER_TYPE.equalsIgnoreCase("jsp")) {
             return new JspRender();
         }
 		return null;
     }
     
-    public Render getDefaultRender(String view) {
-        return new JspRender(view);
-    }
-
     public Render getErrorRender(int errorCode, String view) {
         return new ErrorRender(errorCode, view);
     }
