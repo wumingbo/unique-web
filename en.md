@@ -15,18 +15,18 @@ PDF Doc：[unique-web-guide.pdf](http://imdoc.qiniudn.com/unique-web-guide.pdf)
 
 ##The main features？
 
-+ base on mvc
++ base on webmvc
     + the url to access support `rest` style
     + support the action annotation configuration
 + a basic `ioc` container implementation
-+ based on the template engine show layer rendering
-+ the support of the basedao（based on `dbutils` complete basic database operations, meet most needs）
++ the support of the orm（based on `dbutils` complete basic database operations, meet most needs）
++ based on the template engine show layer rendering support
 + after `redis` cache support, open don't have to add one line of code that can be cached
 + the design of multilayer interceptors
-+ send email plugin
-+ verification code plugin
-+ image processing plugin
-+ shard upload plugin
++ send email support
++ verification code support
++ image processing support
++ shard upload support
 + general utility class
 
 ##The function of the unfinished
