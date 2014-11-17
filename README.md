@@ -1,0 +1,60 @@
+Unique-Web&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[English][1]|中文
+====
+
+[![BSD License](http://img.shields.io/hexpm/l/plug.svg)](https://github.com/biezhi/unique-web)
+[![Build Status](http://img.shields.io/travis/joyent/node/v0.6.svg)](https://github.com/biezhi/unique-web)
+
+![mahua](http://i2.tietuku.com/630edadd7481f675.png)
+##Unique-Web是什么?
+ * 一款轻量级的javaweb开发框架
+
+ * 帮助更多java开发者快速完成功能
+
+##帮助文档
+PDF下载：[unique-web-guide.pdf](http://imdoc.qiniudn.com/unique-web-guide.pdf)
+
+##特性概览？
+
++ 基础的mvc
+    + 支持`rest`风格的url访问
+    + 支持注解式的配置
++ 一个基础的`ioc`容器和实现
++ 基于模板引擎的视图渲染
++ 扩展的basedao插件（DAO底层基于`dbutils`，完成大部分数据库操作）
++ `redis`缓存支持, 只需一个配置即可不加代码进行缓存
++ 多层拦截器的设计
++ 邮件发送插件
++ 多彩验证码插件
++ 图片处理插件
++ 分片上传插件
++ 通用工具类库
+
+##待开发的功能
++ 声明式事务管理
++ 任务调度插件
++ i18n国际化
++ 后台统一验证
+
+##问题反馈
+在使用过程中如果您有遇到问题可以通过以下方式和我沟通
+
++ Email(biezhi.me@gmail.com)
++ QQ: 921293209
++ weibo: [@酷酷的爵](http://weibo.com/u/5238733773)
++ oschina: http://my.oschina.net/biezhi
+
+##加入开源队伍
+在兴趣的驱动下,写一些`免费`的东西，有欣喜，也还有汗水，如果你也有这份对技术的追求可以抽空一起交流，加入我们的行列，后期还有blog、sns这样的开源项目有待开展。
+
+##关于作者
+
+```java
+  public static void main(String[] args) {
+    	Map<String, Object> author = new HashMap<String, Object>();
+		author.put("nickName", "王爵");
+		author.put("blog", "http://blog.im90.me");
+  }
+```
+
+
+  [1]: https://github.com/biezhi/unique-web/blob/master/en.md
