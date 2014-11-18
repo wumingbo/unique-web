@@ -10,6 +10,7 @@ import org.unique.web.core.ActionInvocation;
 import org.unique.web.core.ActionMapping;
 import org.unique.web.exception.ActionException;
 import org.unique.web.handler.Handler;
+import org.unique.web.render.Render;
 import org.unique.web.render.RenderFactory;
 
 /**
@@ -34,10 +35,18 @@ public final class DefalutHandlerImpl implements Handler {
     }
 
     public final boolean handle(String target, HttpServletRequest request, HttpServletResponse response) {
-        // 不处理静态资源
-        if (target.indexOf(".") != -1) {
-            return false;
-        }
+    	if(target.endsWith("/")){
+    		target = target.substring(0, target.length() - 1);
+		}
+    	// 伪静态
+		if(target.endsWith(Render.suffix)){
+			target = target.substring(0, target.length() - Render.suffix.length());
+		} else{
+			// 不处理静态资源
+			if (target.indexOf(".") != -1) {
+	            return false;
+	        }
+		}
 
         logger.debug("reuqest:[" + target + "]");
         

@@ -161,9 +161,6 @@ public final class ActionMapping {
 	 * @return Action对象
 	 */
 	public Action getAction(String url) {
-		if(url.endsWith("/")){
-			url = url.substring(0, url.length() - 1);
-		}
 		Action action = urlMapping.get(url);
 		if (null == action) {
 			action = urlMapping.get((url + "/index").replaceAll("//", "/"));
