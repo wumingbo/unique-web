@@ -39,6 +39,7 @@ public class ActionInvocation {
 		this.nameSpace = nameSpace;
 		this.args = action.getParameters();
 		for (int i = 0; null != args && i < args.length; i++) {
+			System.out.println(args[i]);
 			if (args[i].toString().contains(R.class.getName())) {
 				args[i] = new R(ActionContext.getHttpServletRequest(), ActionContext.getHttpServletResponse());
 			}

@@ -28,7 +28,9 @@ public final class Const {
 	private Const() {}
 
 	public static void putAllConst(final Map<String, String> configMap_){
-		configMap.putAll(configMap_);
+		if(null != configMap_ && !configMap_.isEmpty()){
+			configMap = configMap_;
+		}
 	}
 	
 	/**

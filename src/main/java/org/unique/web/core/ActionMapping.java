@@ -96,7 +96,7 @@ public final class ActionMapping {
 						warnning(controller, method, " 方法参数列表和访问路径的参数个数不匹配！");
 						continue;
 					}
-					//viewPath = "^" + viewPath + "$";
+					viewReg = "^" + viewReg + "$";
 					Action action = new Action(controller, method, arguments, methodType, viewPath);
 					if (null != urlMapping.get(viewReg)) {
 						throw new RuntimeException(controller.getName() + ", action \"" + viewPath + "\"重复");
@@ -161,6 +161,9 @@ public final class ActionMapping {
 	 * @return Action对象
 	 */
 	public Action getAction(String url) {
+		if(url.endsWith("/")){
+			url = url.substring(0, url.length() - 1);
+		}
 		Action action = urlMapping.get(url);
 		if (null == action) {
 			action = urlMapping.get((url + "/index").replaceAll("//", "/"));

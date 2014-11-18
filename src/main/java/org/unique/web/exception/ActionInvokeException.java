@@ -10,7 +10,7 @@ public class ActionInvokeException extends RuntimeException {
 	private static final long serialVersionUID = 1998063243843477017L;
 
 	public ActionInvokeException() {
-		throw new IllegalArgumentException("The parameter errorRender can not be null.");
+		throw new IllegalArgumentException("argument type mismatch");
 	}
 
 	public ActionInvokeException(Exception e) {
