@@ -1,19 +1,25 @@
 package org.unique.web.render;
 
 import org.unique.Const;
-import org.unique.support.render.ErrorRender;
-import org.unique.support.render.HtmlRender;
-import org.unique.support.render.JavascriptRender;
-import org.unique.support.render.JspRender;
-import org.unique.support.render.RedirectRender;
-import org.unique.support.render.TextRender;
+import org.unique.web.render.impl.ErrorRender;
+import org.unique.web.render.impl.HtmlRender;
+import org.unique.web.render.impl.JavascriptRender;
+import org.unique.web.render.impl.JspRender;
+import org.unique.web.render.impl.RedirectRender;
+import org.unique.web.render.impl.TextRender;
 
 /**
  * RenderFactory.
  */
 public class RenderFactory {
 
+	private Render render;
+	
     private RenderFactory() {
+    }
+    
+    public void setRender(Render render){
+    	this.render = render;
     }
     
     public static RenderFactory single() {
@@ -21,7 +27,6 @@ public class RenderFactory {
     }
 
     private static class RenderFactoryHoder {
-
         private static final RenderFactory instance = new RenderFactory();
     }
     
@@ -35,9 +40,11 @@ public class RenderFactory {
 
     public Render getDefaultRender() {
         if (Const.RENDER_TYPE.equalsIgnoreCase("jsp")) {
-            return new JspRender();
+        	if(null == this.render){
+        		this.render = new JspRender();
+        	}
         }
-		return null;
+        return this.render;
     }
     
     public Render getErrorRender(int errorCode, String view) {

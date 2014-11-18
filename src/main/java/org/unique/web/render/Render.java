@@ -17,6 +17,11 @@ public interface Render {
 	 */
 	public static final String prefix = Const.getConfig("unique.view.prefix");
 	
+	/**
+	 * 文件后缀
+	 */
+	public static final String suffix = Const.getConfig("unique.view.suffix");
+	
     /**
      * 渲染视图方法
      * @param request 请求对象

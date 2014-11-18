@@ -1,4 +1,4 @@
-package org.unique.support.render;
+package org.unique.web.render.impl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +13,6 @@ import org.unique.web.render.Render;
  */
 public class JspRender implements Render {
 
-	private static final String suffix = ".jsp";
-	
 	public JspRender() {
 	}
 	

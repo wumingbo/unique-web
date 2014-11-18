@@ -106,13 +106,13 @@ public final class Unique {
 		if(supportList.size() > 0){
 			try {
 				// 第一个启动orm增强
-				Class<?> ormClass = Class.forName("org.unique.support.orm.OrmSupport");
-				if (supportList.contains(ormClass)) {
-					Support support = (Support) ormClass.newInstance();
-					support.startup();
-					SupportManager.put(ormClass.getName(), support);
-					supportList.remove(ormClass);
-				}
+//				Class<?> ormClass = Class.forName("org.unique.support.orm.OrmSupport");
+//				if (supportList.contains(ormClass)) {
+//					Support support = (Support) ormClass.newInstance();
+//					support.startup();
+//					SupportManager.put(ormClass.getName(), support);
+//					supportList.remove(ormClass);
+//				}
 				for (Class<?> clazz : supportList) {
 					Support support = (Support) clazz.newInstance();
 					support.startup();
@@ -122,9 +122,9 @@ public final class Unique {
 				logger.error("初始化增强失败: " + e.getMessage());
 			} catch (IllegalAccessException e) {
 				logger.error("初始化增强失败: " + e.getMessage());
-			} catch (ClassNotFoundException e) {
+			}/* catch (ClassNotFoundException e) {
 				logger.error("类没有被找到: " + e.getMessage());
-			}
+			}*/
 		}
 	}
 
