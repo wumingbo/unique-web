@@ -129,10 +129,6 @@ public class ActionInvocation {
 	public Action getAction() {
 		return action;
 	}
-
-	public void setAction(Action action) {
-		this.action = action;
-	}
 	
 	public String getNameSpace(){
 		return nameSpace;
@@ -142,16 +138,8 @@ public class ActionInvocation {
 		return args;
 	}
 
-	public void setArgs(Object[] args) {
-		this.args = args;
-	}
-
 	public Object getResult() {
 		return result;
-	}
-
-	public void setResult(Object result) {
-		this.result = result;
 	}
 
 }

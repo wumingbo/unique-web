@@ -13,7 +13,6 @@ import org.unique.ioc.impl.DefaultContainerImpl;
 import org.unique.support.Support;
 import org.unique.support.SupportManager;
 import org.unique.tools.ClassHelper;
-import org.unique.tools.CollectionUtil;
 import org.unique.tools.PropUtil;
 import org.unique.web.annotation.Controller;
 import org.unique.web.annotation.Intercept;
@@ -31,23 +30,19 @@ import org.unique.web.listener.WebInitContextListener;
  * @author biezhi
  * @since 1.0
  */
-public class Unique {
+public final class Unique {
 
 	private Logger logger = Logger.getLogger(Unique.class);
 
-	private DefalutHandlerImpl handler;
+	private Handler handler;
 
-	private ActionMapping actionMapping = ActionMapping.single();
+	private ActionMapping actionMapping;
 	
 	// ioc容器
 	private Container container;
 
-	// controller map
-	public final Map<String, Class<?>> controllerMap = CollectionUtil.newConcurrentHashMap();
-
-	private Unique() {
-	}
-
+	private Unique() { }
+	
 	public static Unique single() {
 		return SingleHoder.single;
 	}
@@ -161,13 +156,14 @@ public class Unique {
 	 * 初始化handler
 	 */
 	private void initHandler() {
-		handler = new DefalutHandlerImpl();
+		handler = DefalutHandlerImpl.create();
 	}
 	
 	/**
 	 * 初始化actionMapping
 	 */
 	private void initActionMapping() {
+		actionMapping = ActionMapping.single();
 		Map<String, Action> mapping = actionMapping.buildActionMapping();
 		Set<String> matcherSet = mapping.keySet();
 		List<String> matcherList = new ArrayList<String>(matcherSet);
@@ -178,9 +174,16 @@ public class Unique {
 		}
 		logger.info("action size ：" + matcherList.size());
 	}
-
+	
+	/**
+	 * 获取handler
+	 * @return Handler对象
+	 */
 	public Handler getHandler() {
-		return this.handler;
+		if(null != this.handler){
+			return this.handler;
+		}
+		return null;
 	}
 
 	/**

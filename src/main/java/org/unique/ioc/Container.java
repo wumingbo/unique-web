@@ -21,19 +21,19 @@ public interface Container {
     
     List<Class<?>> getControllers();
     
-    void putController(Class<?> clazz);
-    
     Collection<?> getBeans();
 
     boolean hasBean(Class<?> clazz);
 
     boolean hasBean(String name);
+    
+    boolean isRegister(Annotation[] annotations);
 
     Object registBean(Class<?> clazz);
 
     void initWired();
 
-    boolean isRegister(Annotation[] annotations);
+    void putController(Class<?> clazz);
     
     Map<String, Object> getBeanMap();
 }

@@ -17,7 +17,7 @@ import org.unique.web.render.RenderFactory;
  * @author biezhi
  * @since 1.0
  */
-public class DefalutHandlerImpl implements Handler {
+public final class DefalutHandlerImpl implements Handler {
 
     private final ActionMapping actionMapping = ActionMapping.single();
 
@@ -25,7 +25,12 @@ public class DefalutHandlerImpl implements Handler {
 
     private Logger logger = Logger.getLogger(DefalutHandlerImpl.class);
 
+    @Deprecated
     public DefalutHandlerImpl() {
+    }
+    
+    public static DefalutHandlerImpl create(){
+    	return new DefalutHandlerImpl();
     }
 
     public final boolean handle(String target, HttpServletRequest request, HttpServletResponse response) {

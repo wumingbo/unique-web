@@ -24,7 +24,7 @@ import org.unique.web.render.Render;
  * @author biezhi
  * @since 1.0
  */
-public class ActionMapping {
+public final class ActionMapping {
 
 	private static Logger logger = Logger.getLogger(ActionMapping.class);
 
@@ -151,7 +151,7 @@ public class ActionMapping {
 		return true;
 	}
 	
-	private static final void warnning(Class<?> clazz, Method method, String msg) {
+	private final void warnning(Class<?> clazz, Method method, String msg) {
 		logger.warn(clazz.getName() + "|" + method.getName() + "," + msg);
 	}
 	

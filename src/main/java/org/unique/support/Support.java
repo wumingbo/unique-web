@@ -10,7 +10,7 @@ public abstract class Support {
 	/**
 	 * 增强器状态（1：启用，0：未启用）
 	 */
-	public int status = 0;
+	protected int status = 0;
 	
 	/**
 	 * 启动增强
