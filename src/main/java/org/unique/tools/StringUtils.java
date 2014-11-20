@@ -352,4 +352,26 @@ public class StringUtils {
     public static float toFloat(final String str){
     	return Float.valueOf(str.trim());
     }
+    
+    /**
+     * 计算某个字符串出现次数
+     * @param str 要统计的字符串
+     * @param target 字符串
+     * @return
+     */
+    public static int getCharCount(final String str, final String target){
+    	int counts = 0;
+        String temp = str;
+        int needle = -1;
+        while (true) {
+            needle = temp.indexOf(target, needle + 1);
+            if (needle >= 0)
+                counts++;
+            else {
+                break;
+            }
+        }
+    	return counts;
+    }
+    
 }

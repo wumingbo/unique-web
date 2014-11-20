@@ -69,7 +69,8 @@ public final class DefalutHandlerImpl implements Handler {
             String nameSpace = action.getControllerClass().getAnnotation(org.unique.web.annotation.Controller.class).value();
             Object result = new ActionInvocation(action, nameSpace).invoke();
             if(null != result && result instanceof String){
-            	String viewPath = nameSpace + "/" + result;
+            	nameSpace = nameSpace.startsWith("/") ? nameSpace.substring(1) : nameSpace;
+            	String viewPath = nameSpace + result;
             	renderFactory.getDefaultRender().render(request, response, viewPath);
             }
             return true;
