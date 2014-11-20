@@ -2,7 +2,11 @@ package org.unique.tools;
 
 import java.io.File;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.unique.web.core.ActionContext;
 
 /**
  * web工具类
@@ -125,5 +129,57 @@ public final class WebUtil {
 
         return path;
     }
-
+    
+    public static Object getApplicationAttr(final String name){
+		ServletContext context = ActionContext.getServletContext();
+		if(null != context){
+			return context.getAttribute(name);
+		}
+		return null;
+	}
+	
+	public static void setApplicationAttr(final String name, final Object object){
+		ServletContext context = ActionContext.getServletContext();
+		if(null != context){
+			context.setAttribute(name, object);
+		}
+	}
+	
+	public static void setSession(final String name, final Object object){
+		HttpSession session = ActionContext.getHttpServletRequest().getSession();
+		if(null != session){
+			session.setAttribute(name, object);
+		}
+	}
+	
+	public static Object getSession(final String name){
+		HttpSession session = ActionContext.getHttpServletRequest().getSession();
+		if(null != session){
+			return session.getAttribute(name);
+		}
+		return null;
+	}
+	
+	public static void setAttr(final String name, final Object object){
+		HttpServletRequest request = ActionContext.getHttpServletRequest();
+		if(null != request){
+			request.setAttribute(name, object);
+		}
+	}
+	
+	public static Object getAttr(final String name){
+		HttpServletRequest request = ActionContext.getHttpServletRequest();
+		if(null != request){
+			return request.getAttribute(name);
+		}
+		return null;
+	}
+	
+	public static String getParam(final String name){
+		HttpServletRequest request = ActionContext.getHttpServletRequest();
+		if(null != request){
+			return request.getParameter(name);
+		}
+		return null;
+	}
 }
