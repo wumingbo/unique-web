@@ -163,7 +163,7 @@ public final class ActionMapping {
 	public Action getAction(String url) {
 		Action action = urlMapping.get(url);
 		if (null == action) {
-			action = urlMapping.get((url + "/index").replaceAll("//", "/"));
+			action = urlMapping.get((url + "^/index$").replaceAll("//", "/"));
 			if (null == action) {
 				Set<String> mappings = urlMapping.keySet();
 				for (String mapping : mappings) {

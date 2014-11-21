@@ -18,7 +18,7 @@ import org.unique.web.render.RenderFactory;
  * @author biezhi
  * @since 1.0
  */
-public final class DefalutHandlerImpl implements Handler {
+public final class DefalutHandlerImpl extends Handler {
 
     private final ActionMapping actionMapping = ActionMapping.single();
 

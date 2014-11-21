@@ -3,6 +3,7 @@ package org.unique.tools;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -165,6 +166,17 @@ public class ClassHelper {
     	List<Class<?>> classList = CollectionUtil.newArrayList(classSet.size());
     	for(Class<?> clazz : classSet){
     		if(null != clazz.getSuperclass() && clazz.getSuperclass().equals(parent)){
+    			classList.add(clazz);
+    		}
+    	}
+    	return classList;
+    }
+    
+    public static List<Class<?>> scanClassesByAnnotation(final String packageName, final Class<? extends Annotation> annotation){
+    	Set<Class<?>> classSet = scanPackage(packageName, true);
+    	List<Class<?>> classList = CollectionUtil.newArrayList(classSet.size());
+    	for(Class<?> clazz : classSet){
+    		if(null != clazz.getAnnotation(annotation)){
     			classList.add(clazz);
     		}
     	}

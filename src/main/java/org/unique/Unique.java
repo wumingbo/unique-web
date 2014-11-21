@@ -105,14 +105,6 @@ public final class Unique {
 		List<Class<?>> supportList = ClassHelper.scanClasses("org.unique.support", Support.class);
 		if(supportList.size() > 0){
 			try {
-				// 第一个启动orm增强
-//				Class<?> ormClass = Class.forName("org.unique.support.orm.OrmSupport");
-//				if (supportList.contains(ormClass)) {
-//					Support support = (Support) ormClass.newInstance();
-//					support.startup();
-//					SupportManager.put(ormClass.getName(), support);
-//					supportList.remove(ormClass);
-//				}
 				for (Class<?> clazz : supportList) {
 					Support support = (Support) clazz.newInstance();
 					support.startup();
@@ -156,7 +148,22 @@ public final class Unique {
 	 * 初始化handler
 	 */
 	private void initHandler() {
-		handler = DefalutHandlerImpl.create();
+		List<Class<?>> handlerList = ClassHelper.scanClasses("org.unique.web.handler.impl", Handler.class);
+		if(handlerList.size() == 1){
+			handler = DefalutHandlerImpl.create();
+		}
+		for(Class<?> clazz : handlerList){
+			if(clazz != DefalutHandlerImpl.class){
+				try {
+					handler = (Handler) clazz.newInstance();
+					break;
+				} catch (InstantiationException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	/**
