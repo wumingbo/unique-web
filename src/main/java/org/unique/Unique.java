@@ -70,15 +70,14 @@ public final class Unique {
 		// 初始化拦截器
 		initInterceptor();
 
+		// 初始化第三方增强
+		initSupport();
+				
 		// 初始化handler
 		initHandler();
 		
 		// 初始化自定义上下文
 		initContext();
-		
-		// 初始化第三方增强
-		initSupport();
-		
 		return true;
 	}
 
@@ -114,9 +113,7 @@ public final class Unique {
 				logger.error("初始化增强失败: " + e.getMessage());
 			} catch (IllegalAccessException e) {
 				logger.error("初始化增强失败: " + e.getMessage());
-			}/* catch (ClassNotFoundException e) {
-				logger.error("类没有被找到: " + e.getMessage());
-			}*/
+			}
 		}
 	}
 
@@ -148,21 +145,11 @@ public final class Unique {
 	 * 初始化handler
 	 */
 	private void initHandler() {
-		List<Class<?>> handlerList = ClassHelper.scanClasses("org.unique.web.handler.impl", Handler.class);
-		if(handlerList.size() == 1){
-			handler = DefalutHandlerImpl.create();
-		}
-		for(Class<?> clazz : handlerList){
-			if(clazz != DefalutHandlerImpl.class){
-				try {
-					handler = (Handler) clazz.newInstance();
-					break;
-				} catch (InstantiationException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
-			}
+		Object obj = container.getBean(Handler.class.getName());
+		if (null != obj && obj instanceof Handler) {
+			this.handler = (Handler) obj;
+		} else{
+			this.handler = DefalutHandlerImpl.create();
 		}
 	}
 	

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author biezhi
  * @since 1.0
  */
-public abstract class Handler {
+public interface Handler {
 
-	public abstract boolean handle(String target, HttpServletRequest request, HttpServletResponse response);
+	public boolean handle(String target, HttpServletRequest request, HttpServletResponse response);
 }

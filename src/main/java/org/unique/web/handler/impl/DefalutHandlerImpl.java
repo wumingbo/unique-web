@@ -18,11 +18,11 @@ import org.unique.web.render.RenderFactory;
  * @author biezhi
  * @since 1.0
  */
-public final class DefalutHandlerImpl extends Handler {
+public class DefalutHandlerImpl implements Handler {
 
-    private final ActionMapping actionMapping = ActionMapping.single();
+	protected final ActionMapping actionMapping = ActionMapping.single();
 
-    private static final RenderFactory renderFactory = RenderFactory.single();
+    protected static final RenderFactory renderFactory = RenderFactory.single();
 
     private Logger logger = Logger.getLogger(DefalutHandlerImpl.class);
 
@@ -34,7 +34,7 @@ public final class DefalutHandlerImpl extends Handler {
     	return new DefalutHandlerImpl();
     }
 
-    public final boolean handle(String target, HttpServletRequest request, HttpServletResponse response) {
+    public boolean handle(String target, HttpServletRequest request, HttpServletResponse response) {
     	if(target.endsWith("/")){
     		target = target.substring(0, target.length() - 1);
 		}
@@ -100,7 +100,7 @@ public final class DefalutHandlerImpl extends Handler {
      * @param method 方法
      * @return 验证成功/失败
      */
-    private boolean verifyMethod(HttpMethod methodType, String method) {
+    protected boolean verifyMethod(HttpMethod methodType, String method) {
         if (null == methodType || methodType == HttpMethod.ALL) {
             return true;
         }
